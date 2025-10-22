@@ -3,8 +3,8 @@ self.__BUILD_MANIFEST = {
     "afterFiles": [],
     "beforeFiles": [
       {
-        "source": "/your-repository-name//_next/:path+",
-        "destination": "/your-repository-name/_next/:path+"
+        "source": "/NNDLproject//_next/:path+",
+        "destination": "/NNDLproject/_next/:path+"
       }
     ],
     "fallback": []

@@ -1,10 +1,10 @@
 const isProd = process.env.NODE_ENV === 'production';
-const repositoryName = 'your-repository-name'; // ← Замените здесь
+const repositoryName = 'NNDLproject';
 
 const nextConfig = {
     // (Optional) Export as a static site
     // See https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#configuration
-    distDir: 'pages',
+    distDir: 'docs',
     output: 'export',
     trailingSlash: true,
     basePath: isProd ? `/${repositoryName}` : '',
