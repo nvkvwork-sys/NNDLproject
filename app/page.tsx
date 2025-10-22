@@ -25,7 +25,7 @@ const SentimentAnalyzer = () => {
     try {
       setTrainingLog(prev => prev + '📁 Loading IMDBDataset.csv from public folder...\n');
       
-      const response = await fetch('/IMDBDataset.csv');
+      const response = await fetch('IMDBDataset.csv');
       if (!response.ok) {
         throw new Error(`Failed to load CSV file: ${response.status}`);
       }
