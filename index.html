@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sentiment Analysis (DistilBERT) — IMDB Reviews</title>
+    <meta name="description" content="Browser-based sentiment analysis using DistilBERT (Transformers.js). Deployable on GitHub Pages." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <p class="subtitle">DistilBERT in your browser. No server needed.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <label for="review-input" class="label">Enter a review</label>
+        <textarea id="review-input" class="textarea" rows="6" placeholder="Type or paste a review, then click Analyze...&#10;Example: The delivery was fast and the product is great!"></textarea>
+
+        <div class="controls">
+          <button id="analyze-btn" class="btn primary">Analyze</button>
+          <button id="clear-btn" class="btn">Clear</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+          <div class="spinner" aria-hidden="true"></div>
+          <div class="loading-text">
+            <strong>Loading model</strong>
+            <span class="muted">(first run downloads weights, cached afterward)</span>
+          </div>
+        </div>
+
+        <div id="result" class="result hidden" aria-live="polite"></div>
+
+        <details class="help">
+          <summary>How it works and thresholds</summary>
+          <p>
+            This app uses a pre-trained DistilBERT model fine-tuned on SST-2 to output
+            POSITIVE/NEGATIVE probabilities. A <em>neutral</em> label is inferred when
+            the probabilities are close (near 50/50) or the confidence is below a threshold.
+            You can adjust this threshold in <code>app.js</code>.
+          </p>
+        </details>
+      </section>
+
+      <section class="card examples">
+        <h2 class="h2">Examples</h2>
+        <div class="chips" id="example-chips">
+          <button class="chip" data-text="The delivery was fast and the product is great!">The delivery was fast and the product is great!</button>
+          <button class="chip" data-text="Terrible service, never buying here again.">Terrible service, never buying here again.</button>
+          <button class="chip" data-text="It works as expected.">It works as expected.</button>
+          <button class="chip" data-text="The packaging was okay but the item felt cheap.">The packaging was okay but the item felt cheap.</button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Powered by <a href="https://www.npmjs.com/package/@xenova/transformers" target="_blank" rel="noreferrer">Transformers.js</a>
+          • Model: <code>Xenova/distilbert-base-uncased-finetuned-sst-2-english</code>
+        </p>
+      </footer>
+    </main>
+
+    <!-- Transformers.js (global) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
+    <!-- App logic -->
+    <script defer src="app.js"></script>
+  </body>
+  </html>
+
+
